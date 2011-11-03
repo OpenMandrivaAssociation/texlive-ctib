@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /language/tibetan/ctib
+# catalog-date 2007-02-04 13:34:13 +0100
+# catalog-license gpl
+# catalog-version undef
 Name:		texlive-ctib
 Version:	20070204
 Release:	1
@@ -62,6 +68,7 @@ preprocessor is needed.
 %doc %{_texmfdistdir}/source/latex/ctib/HISTORY
 %doc %{_texmfdistdir}/source/latex/ctib/INSTALL
 %doc %{_texmfdistdir}/source/latex/ctib/MIKTEX
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -72,3 +79,5 @@ preprocessor is needed.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
