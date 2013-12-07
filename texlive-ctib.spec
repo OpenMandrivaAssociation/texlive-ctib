@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-ctib
 Version:	20070204
-Release:	2
+Release:	3
 Summary:	Tibetan for TeX and LATeX2e
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/tibetan/ctib
