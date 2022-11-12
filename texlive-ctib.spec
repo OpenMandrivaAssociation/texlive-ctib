@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /language/tibetan/ctib
-# catalog-date 2007-02-04 13:34:13 +0100
-# catalog-license gpl
-# catalog-version undef
 Name:		texlive-ctib
-Version:	20190228
+Version:	15878
 Release:	1
 Summary:	Tibetan for TeX and LATeX2e
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/tibetan/ctib
 License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -26,12 +20,12 @@ clusters are formed by TeX and Metafont. No external
 preprocessor is needed.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -61,24 +55,11 @@ preprocessor is needed.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 20070204-2
-+ Revision: 750667
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 20070204-1
-+ Revision: 718182
-- texlive-ctib
-- texlive-ctib
-- texlive-ctib
-- texlive-ctib
-
