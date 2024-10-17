@@ -3,7 +3,7 @@ Version:	15878
 Release:	2
 Summary:	Tibetan for TeX and LATeX2e
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/language/tibetan/ctib
+URL:		https://www.ctan.org/tex-archive/language/tibetan/ctib
 License:	GPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.doc.r%{version}.tar.xz
