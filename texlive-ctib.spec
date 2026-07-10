@@ -1,65 +1,24 @@
-Name:		texlive-ctib
-Version:	15878
-Release:	2
-Summary:	Tibetan for TeX and LATeX2e
+%global tl_name ctib
+%global tl_revision 15878
+
+Name:		texlive-%{tl_name}
+Version:	%{tl_revision}
+Release:	1
+Summary:	Tibetan for TeX and LaTeX2e
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/language/tibetan/ctib
-License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.source.r%{version}.tar.xz
+License:	gpl
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/ctib.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
 A package using a modified version of Sirlin's Tibetan font. An
-advantage of this Tibetan implementation is that all consonant
-clusters are formed by TeX and Metafont. No external
-preprocessor is needed.
+advantage of this Tibetan implementation is that all consonant clusters
+are formed by TeX and Metafont. No external preprocessor is needed.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/fonts/source/public/ctib/bzrsetup.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctib.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctibcode.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctiblett.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctibligs.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctibnum.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctibpunc.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctibsplt.mf
-%{_texmfdistdir}/fonts/source/public/ctib/ctibvow.mf
-%{_texmfdistdir}/fonts/tfm/public/ctib/ctib.tfm
-%{_texmfdistdir}/tex/latex/ctib/ctib.sty
-%{_texmfdistdir}/tex/latex/ctib/ctib.tex
-%{_texmfdistdir}/tex/latex/ctib/lctctib.fd
-%{_texmfdistdir}/tex/latex/ctib/lctenc.def
-%doc %{_texmfdistdir}/doc/latex/ctib/README
-%doc %{_texmfdistdir}/doc/latex/ctib/ctib4tex.pdf
-%doc %{_texmfdistdir}/doc/latex/ctib/ctib4tex.tex
-#- source
-%doc %{_texmfdistdir}/source/latex/ctib/COPYING
-%doc %{_texmfdistdir}/source/latex/ctib/EMTEX
-%doc %{_texmfdistdir}/source/latex/ctib/HISTORY
-%doc %{_texmfdistdir}/source/latex/ctib/INSTALL
-%doc %{_texmfdistdir}/source/latex/ctib/MIKTEX
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
